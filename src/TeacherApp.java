@@ -85,6 +85,7 @@ public class TeacherApp extends Application {
         HBox hBoxLblTop = new HBox(lblTop);
 
         VBox vBoxDataCenter = new VBox(idData, nameData, surnameData, emailData);
+        vBoxDataCenter.setSpacing(20);
 
         VBox vBoxListView = new VBox();
 
