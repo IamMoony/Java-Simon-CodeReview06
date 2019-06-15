@@ -63,7 +63,7 @@ public class TeacherDataAccess {
 
     public List<Classes> getAllRows2(int i) throws SQLException {
 
-        String sql = "SELECT class.className FROM class INNER JOIN teacherclass ON class.classId = teacherclass.fk_classId WHERE teacherclass.fk_teacherId = ?";
+        String sql = "SELECT class.classId, class.className FROM class INNER JOIN teacherclass ON class.classId = teacherclass.fk_classId WHERE teacherclass.fk_teacherId = ?";
         PreparedStatement pstmnt = conn.prepareStatement(sql);
         pstmnt.setInt(1, i);
         ResultSet rs = pstmnt.executeQuery();
