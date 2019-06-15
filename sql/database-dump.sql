@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2019 at 06:02 PM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Jun 15, 2019 at 07:20 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -120,6 +120,8 @@ CREATE TABLE `teacherclass` (
 INSERT INTO `teacherclass` (`fk_teacherId`, `fk_classId`) VALUES
 (1, 2),
 (1, 6),
+(2, 2),
+(2, 8),
 (3, 5),
 (3, 8),
 (4, 6),
