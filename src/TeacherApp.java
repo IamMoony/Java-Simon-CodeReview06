@@ -70,8 +70,9 @@ public class TeacherApp extends Application {
         Label lblName = new Label("Name");
         Label lblSurname = new Label("Surname");
         Label lblEmail = new Label("Email");
+        Label teachers = new Label("Teachers");
         Label wichClasses = new Label("Teaches this classes");
-
+        Label thisTeacher = new Label("This teacher");
         txtIdData = new Text();
         txtNameData = new Text();
         txtSurnameData = new Text();
@@ -82,10 +83,16 @@ public class TeacherApp extends Application {
         HBox surnameData = new HBox(lblSurname, txtSurnameData);
         HBox emailData = new HBox(lblEmail, txtEmailData);
 
+        idData.setSpacing(10);
+        nameData.setSpacing(10);
+        surnameData.setSpacing(10);
+        emailData.setSpacing(10);
+
         HBox hBoxLblTop = new HBox(lblTop);
 
-        VBox vBoxDataCenter = new VBox(idData, nameData, surnameData, emailData);
+        VBox vBoxDataCenter = new VBox(thisTeacher, idData, nameData, surnameData, emailData);
         vBoxDataCenter.setSpacing(35);
+        vBoxDataCenter.setAlignment(Pos.BASELINE_CENTER);
 
         VBox vBoxListView = new VBox();
 
@@ -105,10 +112,13 @@ public class TeacherApp extends Application {
         data = getDbData();
         listView.setItems(data);
 
-        listView2 = new ListView<>();
-        vBoxListView2.getChildren().add(listView2);
+        vBoxListView.getChildren().addAll(teachers, listView);
 
-        vBoxListView.getChildren().add(listView);
+        listView2 = new ListView<>();
+
+        vBoxListView2.getChildren().addAll(wichClasses, listView2);
+
+
 
         root.setLeft(vBoxListView);
         root.setRight(listView2);
