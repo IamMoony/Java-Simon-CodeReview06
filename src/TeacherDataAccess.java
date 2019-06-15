@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.ArrayList;
+
 public class TeacherDataAccess {
 
     private Connection conn;
@@ -43,7 +44,7 @@ public class TeacherDataAccess {
      */
     public List<Teacher> getAllRows()  throws SQLException {
 
-        String sql = "SELECT * FROM " + teacherTable + " ORDER BY name";
+        String sql = "SELECT * FROM " + teacherTable + " ORDER BY teacherName";
         PreparedStatement pstmnt = conn.prepareStatement(sql);
         ResultSet rs = pstmnt.executeQuery();
         List<Teacher> list = new ArrayList<>();
@@ -58,6 +59,23 @@ public class TeacherDataAccess {
 
         pstmnt.close(); // also closes related result set
         return list;
+    }
+
+    public List<Classes> getAllRows2(int i) throws SQLException {
+
+        String sql = "SELECT class.className FROM class INNER JOIN teacherclass ON class.classId = teacherclass.fk_classId WHERE teacherclass.fk_teacherId = ?";
+        PreparedStatement pstmnt = conn.prepareStatement(sql);
+        pstmnt.setInt(1, i);
+        ResultSet rs = pstmnt.executeQuery();
+        List<Classes> listClasses = new ArrayList<>();
+
+        while (rs.next()) {
+            int i2 = rs.getInt("classId");
+            String name = rs.getString("className");
+            listClasses.add(new Classes(i2, name));
+        }
+        pstmnt.close();
+        return listClasses;
     }
 
 /*
